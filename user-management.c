@@ -3,7 +3,7 @@
 #include <time.h>
 
 #define USERNAME_LENGTH 20
-#define PASSWORD_LEGTH 64 // To store the hashed value of the password 
+#define PASSWORD_LENGTH 64 // To store the hashed value of the password 
 
 struct Student {
     char full_name[50];
