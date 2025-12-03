@@ -1,4 +1,7 @@
 #include "user-management.h"
+#include "library-management.h"
+#include <sdlib.h>
+#include <string.h>
 #include <stdio.h>
 #include <time.h>
 
