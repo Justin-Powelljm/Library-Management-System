@@ -1,19 +1,54 @@
-#include "user-management.h"
 #include <stdio.h>
-#include <time.h>
+#include <string.h>
+#include "usermanagement.h"
 
-#define USERNAME_LENGTH 20
-#define PASSWORD_LEGTH 64 // To store the hashed value of the password 
+// SAFE INPUT FUNCTION
+int getIntInput() {
+    int value;
+    while (scanf("%d", &value) != 1) {
+        printf("Invalid input. Enter a number: ");
+        while (getchar() != '\n'); // clear buffer
+    }
+    return value;
+}
 
-struct Student {
-    char full_name[50];
-    char user_name[USERNAME_LENGTH];
-    char password[PASSWORD_LENGTH];
-};
+// ADMIN LOGIN
+void adminLogin() {
+    char username[20], password[20];
 
-struct Admin {
-    char user_name[USERNAME_LENGTH];
-    char password[PASSWORD_LENGTH];
-};
+    printf("\n===== ADMIN LOGIN =====\n");
+    printf("Username: ");
+    scanf("%s", username);
 
+    printf("Password: ");
+    scanf("%s", password);
 
+    if (strcmp(username, "root") == 0 && strcmp(password, "hello") == 0) {
+        printf("\n✔ Admin logged in successfully!\n");
+        // TODO: call admin menu
+    } else {
+        printf("\n✘ Invalid admin credentials.\n");
+    }
+}
+
+// STUDENT LOGIN
+void studentLogin() {
+    printf("\n===== STUDENT LOGIN =====\n");
+    printf("Feature not fully implemented yet.\n");
+}
+
+// REGISTER STUDENT
+void registerStudent() {
+    printf("\n===== STUDENT REGISTRATION =====\n");
+    printf("Feature not fully implemented yet.\n");
+}
+
+// RESET PASSWORD
+void resetPassword() {
+    printf("\n===== RESET PASSWORD =====\n");
+}
+
+char* hashPassword(const char *plain) {
+    // temporary fake hash
+    return "HASHED123";
+}
