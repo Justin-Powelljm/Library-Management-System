@@ -1,11 +1,16 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <ctype.h>
+#include "user-management.h>
 #include "library management.h"
 
 // Global array of books
-Book books[200];
+Book *books[MAXBOOKS];
+Loan *loans[MAXLOANS]
 int bookCount = 0;
+int loanCount = 0;
+
 
 // Save books to binary file
 void saveBooks() {
@@ -210,3 +215,4 @@ void returnBook() {
 
     printf("✘ Book not found.\n");
 }
+
