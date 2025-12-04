@@ -2,111 +2,82 @@
 #include "library-management.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-Void mainmenu();
-int Adminlogin();
-void Adminmenu();
-void Studentmenu(int sid);
-void Save_all_data();
-
-
-int main () {
-    srand(time(NULL));
-    load_books_from_file();
-    rebuild_books_pstr();
-
-    
-    return 0;
-}
-
-void mainmenu {
+int main () 
+{
     int choice;
+    char username[50];
+    password[50];
+    int studentIndex;
 
-while (1){ 
-   printf("\n-------------------------\n");
-   printf("    Academic Archives Library system   ");
-   printf("\n-------------------------\n");
-   printf("1. Admin login\n ");
-   printf("2. Student login\n");
-   printf("3. Registering as student\n ");
-   printf("4. Forgot password\n");
-   printf("5. Exit\n");
-   printf("------------------------------\n");
-   printf("Please select\n");
-   scanf("%d, &choice);
+    loadBooks();
+    loadLoans();
+    loadStudents();
+    while(1)
+    {
+        printf("\n-------------------------\n");
+        printf("    Academic Archives Library system   ");
+        printf("\n-------------------------\n");
+        printf("1. Admin login\n ");
+        printf("2. Student login\n");
+        printf("3. Registering as student\n ");
+        printf("4. Forgot password\n");
+        printf("5. Exit\n");
+        printf("Choice: ");
+        scanf("%d", &choice);
 
-       switch (choice) {
+        if(choice == 1)
+        {
+            printf("\n===Admin Login===\n");
+            printf("Username: ");
+            scanf("%s", username);
+            printf("Password: ");
+            scanf("%s", password);
 
-case :1 
-    if (Adminlogin()) {
-        Adminmenu ();
-} else { 
-  printf("Invalid Admin credentials\n.");
-}
-break;
-
-case 2: {
-int sid = studentlogin();
-if (sid >=0) {
- 
-  StudentMenu(sid);
-            } else {
-                printf("Invalid student login.\n");
+            if (strcmp(username, "root") == 0 && strcmp(password, "hello") == 0) 
+            {
+                printf("\nLogin successful!\n");
+                adminMenu();
             }
-            break;
+            else
+            {
+                printf("Incorrect username or password!\n");
+            }
         }
-
-case 3:
-registerStudent();
-break;
-
-        case 4:
+        else if(choice == 2)
+        {
+            studentIndex = loginStudent();
+            if(studentIndex != -1)
+            {
+                printf("\nLogin Successful!\n");
+                studentMenu(studentIndex);
+            }
+        }
+        else if(choice == 3)
+        {
+            registerStudent();
+        }
+        else if(choice == 4)
+        {
             forgotPassword();
-            break;
+        }
+        else if(choice == 5)
+        {
+            saveBooks();
+            saveLoans();
+            saveStudents();
 
-        case 5:
-            printf("Saving new data...\n");
-            save_all_data();
-            printf("Exisitng...\n");
-            return;
+            printf("Thank you •‿•\n");
 
-        default:
-            printf("Invalid choice. Try again.\n");
+            //there's no need to free memory since arrays are being used instead of pointers
+            return 0;
+        }
+        else
+        {
+            printf("Invalid choice!\n");
         }
     }
-}
 
-
-// -------------------- DATA SAVE WRAPPER --------------------
-
-void save_all_data() {
-    saveBooksToFile();
-    saveStudentsToFile();
-}
-
-// -------------------- ADMIN LOGIN --------------------
-
-int AdminLogin() {
-    char username[50], password[50];
-
-    printf("Admin username: ");
-    fgets(username, sizeof(username), stdin);
-    username[strcspn(username, "\n")] = '\0';
-
-    printf("Admin password: ");
-    fgets(password, sizeof(password), stdin);
-    password[strcspn(password, "\n")] = '\0';
-
-    if (strcmp(username, "root") == 0 && strcmp(password, "hello") == 0) {
-        return 1;
-    }
     return 0;
 }
-
-
-
-
-
-
-
-
