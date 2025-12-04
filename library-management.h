@@ -28,7 +28,7 @@ void saveBooks();
 void loadLoans();
 void saveLoans();
 void AddBook();
-void removeBook();
+void deleteBook();
 void updateBook();
 void searchBook();
 void showAllBooks();
@@ -39,5 +39,6 @@ void adminMenu();
 void convertLcase(char *str, int index);
 
 #endif
+
 
 
