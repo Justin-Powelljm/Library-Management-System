@@ -176,14 +176,14 @@ void searchBook() {
     search[strcspn(search, "\n")] = 0;
     
     //recursive function to convert to lowercase
-    convertLowercase(search, 0);
+    convertLcase(search, 0);
     
     for (i = 0; i < bookCount; i++) {
         int match = 0;
         
         if (choice == 1) {
             strcpy(temp, books[i].title);
-            convertLowercase(temp, 0);
+            convertLcase(temp, 0);
             if (strstr(temp, search) != NULL) {
                 match = 1;
             }
@@ -347,6 +347,7 @@ void returnBook() {
 
     printf("✘ Book not found.\n");
 }
+
 
 
 
