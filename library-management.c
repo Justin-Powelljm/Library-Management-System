@@ -97,7 +97,7 @@ void saveloans()
 // ADD BOOK
 void AddBook() {
     if(bookCount >= MAXBOOKS) {
-        printf("Library is full!"\n);
+        printf("Library is full!\n");
         return;
     }
 
@@ -347,6 +347,7 @@ void returnBook() {
 
     printf("✘ Book not found.\n");
 }
+
 
 
 
