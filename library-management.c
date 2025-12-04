@@ -2,12 +2,12 @@
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
-#include "user-management.h>
-#include "library management.h"
+#include "user-management.h"
+#include "library-management.h"
 
 // Global pointer arrays
 Book *books[MAXBOOKS];
-Loan *loans[MAXLOANS]
+Loan *loans[MAXLOANS];
 int bookCount = 0;
 int loanCount = 0;
 
@@ -35,10 +35,10 @@ void loadBooks()
     if(file != NULL)
     {
         fread(&bookCount, sizeof(int), 1, fp);
-        for(int j = 0; j < bookCount; i++)
+        for(int j = 0; j < bookCount; j++)
         {
             books[j] = (Book*)malloc(sizeof(Book));
-            fread(books[i], sizeof(Book), 1 ,fp);
+            fread(books[j], sizeof(Book), 1 ,fp);
         }
         fclose(fp);
     } 
@@ -67,7 +67,7 @@ void loadLoans()
     if(fp != NULL)
     {
         fread(&loanCount, sizeof(int), 1, fp);
-        for(int j = 0; j < loanCont; i++)
+        for(int j = 0; j < loanCont;  j++)
         {
             loans[j] = (Loan*)malloc(sizeof(Loan));
             fread(loans[j], sizeof(Loan), 1, fp);
@@ -347,5 +347,6 @@ void returnBook() {
 
     printf("✘ Book not found.\n");
 }
+
 
 
