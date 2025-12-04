@@ -22,11 +22,6 @@ typedef struct
   char isbn[20];
 } Loan;
 
-//Gloabal variables
-extern Book *books[MAXBOOKS];
-extern Loan *loans[MAXLOANS];
-extern int bookCount;
-extern int loanCount;
 
 void loadBooksNloans();
 void saveBooksNloans();
@@ -34,10 +29,12 @@ void AddBook();
 void deleteBook();
 void updateBook();
 void searchBook();
-void listBooks();
+void showAllBooks();
 void borrowBook(int stuI);
 void returnBook(int stuI);
 int BookIsLoaned(const char* isbn);
 void adminMenu();
+void convertLcase(char *str, int index);
 
 #endif
+
