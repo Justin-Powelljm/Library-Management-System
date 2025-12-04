@@ -63,7 +63,7 @@ void saveBooks() {
 //load loans from the binary file
 void loadLoans()
 {
-    FILE *fp5 = fopen("loans.dat, "rb");
+    FILE *fp = fopen("loans.dat, "rb");
     if(fp != NULL)
     {
         fread(&loanCount, sizeof(int), 1, fp);
@@ -347,6 +347,7 @@ void returnBook() {
 
     printf("✘ Book not found.\n");
 }
+
 
 
 
