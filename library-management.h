@@ -23,10 +23,12 @@ typedef struct
 } Loan;
 
 
-void loadBooksNloans();
-void saveBooksNloans();
+void loadBooks();
+void saveBooks();
+void loadLoans();
+void saveLoans();
 void AddBook();
-void deleteBook();
+void removeBook();
 void updateBook();
 void searchBook();
 void showAllBooks();
@@ -37,4 +39,5 @@ void adminMenu();
 void convertLcase(char *str, int index);
 
 #endif
+
 
